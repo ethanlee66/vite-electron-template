@@ -1,0 +1,29 @@
+{
+  "name": "vite-electron-template",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "main": "dist/main/electron-main.cjs",
+  "scripts": {
+    "dev": "vite --config packages/renderer/vite.config.ts",
+    "electron:start": "node scripts/start-electron.js",
+    "build": "vue-tsc -b && vite build --config packages/renderer/vite.config.ts",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "sqlite3": "^5.1.7",
+    "vue": "^3.4.29"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.5",
+    "electron": "^31.2.0",
+    "electron-builder": "^24.13.3",
+    "typescript": "^5.2.2",
+    "vite": "^5.3.1",
+    "vite-plugin-node-polyfills": "^0.22.0",
+    "vue-tsc": "^2.0.21",
+    "wait-on": "^7.2.0"
+  }
+}
