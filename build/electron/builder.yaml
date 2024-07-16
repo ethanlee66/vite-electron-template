@@ -1,0 +1,10 @@
+appId: com.example.myapp
+productName: ViteElectronTemplate
+directories:
+  output: dist/electron-dist
+  buildResources: dist/electron-dist
+asar: false
+files:
+  - "**/dist/main/**"
+  - "**/dist/renderer/**"
+  - "**/dist/preload/**"

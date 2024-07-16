@@ -8,9 +8,10 @@ const PACKAGE_ROOT = __dirname;
 export default defineConfig({
   root: PACKAGE_ROOT,
   plugins: [vue()],
-  publicDir: resolve(PACKAGE_ROOT, '../../public'),
+  base: './',
   build: {
-    outDir: resolve('dist/renderer')
+    outDir: resolve(PACKAGE_ROOT, '../../dist/renderer'), 
+    emptyOutDir: true
   },
   server: {
     port: 3000

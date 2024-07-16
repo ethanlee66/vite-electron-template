@@ -1,4 +1,6 @@
 import { build } from 'vite'
-await build({ configFile: 'packages/electron/main/vite.config.ts' })
-await build({ configFile: 'packages/electron/preload/vite.config.ts' })
-// await build({ configFile: 'packages/renderer/vite.config.ts' })
+
+console.info(process.env.MODE)
+await build({ configFile: 'packages/electron/main/vite.config.ts', mode: process.env.MODE })
+await build({ configFile: 'packages/electron/preload/vite.config.ts', mode: process.env.MODE })
+await build({ configFile: 'packages/renderer/vite.config.ts', mode: process.env.MODE })

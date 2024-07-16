@@ -1,11 +1,11 @@
 import {app, BrowserWindow } from 'electron'
 import path, { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import {verbose} from 'sqlite3'
-
-const isPackaged = app.isPackaged
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const isDevelopment = import.meta.env.MODE === 'development'
+
+console.info('[electron] process.env.NODE_ENV', import.meta.env.MODE)
 
 function createWindow() {
     const win = new BrowserWindow({
@@ -18,42 +18,11 @@ function createWindow() {
         }
     })
 
-    win.loadURL('http://localhost:3000')
+    win.loadURL(isDevelopment ? 'http://localhost:3000' : `file://${join(__dirname, '../renderer/index.html')}`)
 
-    if (!isPackaged) {
+    if (isDevelopment) {
         win.webContents.openDevTools()
     }
-
-    useSqlite()
-}
-
-function useSqlite() {
-    const sqlite3 = verbose()
-    let db = new sqlite3.Database(path.resolve(__dirname, 'example.db'), (err) => {
-        if (err) {
-            console.error(err.message)
-        }
-        console.log('Connected to the SQLite database.')
-    })
-
-    db.run(`CREATE TABLE IF NOT EXISTS users (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT,
-        email TEXT
-    )`, (err) => {
-    if (err) {
-      console.error(err.message);
-    }
-    console.log('Created users table.');
-  });
-
-//   // 关闭数据库
-// db.close((err) => {
-//     if (err) {
-//       console.error(err.message);
-//     }
-//     console.log('Closed the database connection.');
-//   });
 }
 
 app.on('ready', createWindow);
