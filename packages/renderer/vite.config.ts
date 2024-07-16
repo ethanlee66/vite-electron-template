@@ -1,8 +1,8 @@
+import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
-import {resolve} from 'path'
 import vue from '@vitejs/plugin-vue'
 
-const PACKAGE_ROOT = __dirname;
+const PACKAGE_ROOT = __dirname
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -10,10 +10,10 @@ export default defineConfig({
   plugins: [vue()],
   base: './',
   build: {
-    outDir: resolve(PACKAGE_ROOT, '../../dist/renderer'), 
-    emptyOutDir: true
+    outDir: resolve(PACKAGE_ROOT, '../../dist/renderer'),
+    emptyOutDir: true,
   },
   server: {
-    port: 3000
-  }
+    port: 3000,
+  },
 })

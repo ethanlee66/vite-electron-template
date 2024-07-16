@@ -5,6 +5,6 @@ directories:
   buildResources: dist/electron-dist
 asar: false
 files:
-  - "**/dist/main/**"
-  - "**/dist/renderer/**"
-  - "**/dist/preload/**"
+  - '**/dist/main/**'
+  - '**/dist/renderer/**'
+  - '**/dist/preload/**'
